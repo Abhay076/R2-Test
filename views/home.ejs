@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Document</title> -->
+    <title>
+        <%= locals.title%>
+    </title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+  <h1 id="heading-products">
+        Products
+  </h1>
+  <div id="products-list-container">
+        <ul>
+            <% for(let i of product_list){%>
+                <li class="product">
+                    <div class="details">
+                   <p><%= i.productId %></p>
+                   <p><%= i.quantity %></p>
+                   </div>
+                   <div class="delete-products">
+                      <a href="/subtract-product/?id=<= i._id%>">
+                      <i>delete</i>
+                    </a>
+                   </div>
+                </li>
+            <%}%>
+        </ul>
+  </div>
+
+  <form action="/add-product" method="post" id="new">
+           <input type="number" name="id" placeholder="add product" required>
+           <input type="number" name="qty" placeholder="enter the qty">
+           <button type="submit" id="button"> Add product</button>
+  </form>
+
+    
+</body>
+</html>
